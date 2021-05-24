@@ -1,0 +1,39 @@
+CREATE TABLE IF NOT EXISTS "questions"
+(
+    question_id INTEGER NOT NULL PRIMARY KEY,
+    question_text TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "choices"
+(
+    choice_id INTEGER NOT NULL PRIMARY KEY,
+    choice_text TEXT NOT NULL,
+    question_id INTEGER NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES questions (question_id)
+);
+
+CREATE TABLE IF NOT EXISTS "answers"
+(
+    choice_id INTEGER NOT NULL,
+    answer_to INTEGER NOT NULL,
+    FOREIGN KEY (choice_id) REFERENCES choices (choice_id),
+    FOREIGN KEY (answer_to) REFERENCES questions (question_id)
+);
+
+CREATE TABLE IF NOT EXISTS "quizzes"
+(
+    quiz_id INTEGER NOT NULL PRIMARY KEY,
+    quiz_name TEXT NOT NULL,
+    quiz_description TEXT NOT NULL,
+    quiz_colorcode TEXT NOT NULL DEFAULT "#a33ae0",
+    quiz_client_should_randomize_order INT NOT NULL DEFAULT 0,
+    quiz_client_should_see_correct_answers INT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE IF NOT EXISTS "quiz_questions"
+(
+    question_id INTEGER NOT NULL,
+    quiz_id INTEGER NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES questions (question_id),
+    FOREIGN KEY (quiz_id) REFERENCES quizzes (quiz_id)
+);

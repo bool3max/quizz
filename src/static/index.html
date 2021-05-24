@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Quizz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="/static/css/main.css" rel="stylesheet">
+</head>
+<body class="p-3">
+    <div class="container" id="nav">
+        <div class="row">
+            <div class="col">
+                <h1 class="mx-auto navmain"><a href="/#">Quizzes</a></h1>
+            </div>
+            <div class="col">
+                <h1 class="mx-auto navmain"><a href="/#submit">New Quiz</a></h5>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="quiz_browser" class="container">
+        <h4>Quizzes: </h4>
+        <div id="quiz_browser_row" class="row row-cols-auto justify-content-start gy-3">
+        </div>
+    </div>
+    <form id="quiz_maker" class="container">
+        <h4>Submit new quiz:</h4>
+        <div class="row align-items-center" id="quiz-maker-basic-info">
+            <div class="col">
+                Quiz name: <input type="text" required id="f_quiz_name">
+            </div>
+            <div class="col">
+                Quiz description: <input type="text" required id="f_quiz_description">
+            </div>
+            <div class="col">
+                Pick a color: <input type="color" value="#a33ae0" required id="f_quiz_colorcode">
+            </div>
+            <div class="col">
+                Randomize question order: <input type="checkbox" id="f_quiz_randomize_order">
+            </div>
+        </div>
+        <hr>
+        <div class="row row-cols-2 ralign-items-center quiz-maker-questions">
+            <fieldset class="col quiz-maker-question">
+                <h5>Question</h5>
+                <div>
+                    <span class="bold">Question text:</span><br>
+                    <input type="text" required placeholder="What's the capital of Serbia?" class="quiz-maker-question-text-input">
+                </div>
+                <div>
+                    <span class="bold">Choices:</span>
+                    <div class="quiz-maker-choice-checkbox-combo">
+                        <input type="text" required placeholder="Belgrade" class="quiz-maker-question-choice-text-input"><input type="checkbox">
+                    </div>
+                </div>
+            </fieldset>
+            <!-- add new fieldsets here as necessary-->
+        </div>
+        <hr>
+        <div class="row" style="margin-top: 10px;">
+            <input type="submit" id="submit_new_quiz" value="Create quiz..." class="btn btn-outline-secondary">
+        </div>
+    </form>
+    <form id="quiz_taker" class="container">
+        <h4 id="quiz-taker-quiz-title"></h4>
+        <div id="quiz-taker-row" class="row row-cols-3 justify-content-start gy-4">
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <input type="submit" id="quiz-taker-submit" class="btn btn-outline-secondary" value="Check answers...">
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
