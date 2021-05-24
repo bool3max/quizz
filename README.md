@@ -1,6 +1,6 @@
 # Quizz
 
-This repository contains the source code of a simple web quiz-like web application written for a school project.
+This repository contains the source code of a simple quiz-like web application written for a school project.
 
 ## Requirements
 
