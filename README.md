@@ -35,6 +35,8 @@ $ pip install flask
     $ env FLASK_APP=src/quiz_main.py FLASK_ENV=development DB_PATH=<name.db> flask run
     ```
 
+3. Visit the app locally on `http://localhost:5000`. The port that the Werkzeug development server listens on can be changed.
+
 ## Caveats
 
 * The `quiz_client_should_see_correct_answers` column in the `quizzes` table is not modifiable by the client during the creation of a quiz, and as such defaults to `1` (`True`) in SQLite. The client implementation
