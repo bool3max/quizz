@@ -47,8 +47,6 @@ def get_quiz(quiz_id):
         "questions": []
     }
 
-    print("UUUUUUUUUUUUU", quiz_id)
-
     with sqlite3.connect(DB_PATH) as conn:
         cur = conn.cursor()
 
