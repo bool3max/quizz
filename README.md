@@ -44,3 +44,5 @@ however fully supports this field, and it is returned by the server when a parti
 
 * The `quiz_client_should_randomize_order` column in the `quizzes` table currently has no effect. The user can alter its value during the creation of a new quiz, and its value is returned by the API, however
 it has no effect on the order of the questions in the rendered DOM. I may implement support for it in the future.
+
+* Currently the Heroku application runs on a free tier, using the builtin development Werkzeug server, with `FLASK_ENV=production`. This is not optimal, and I should switch to a production-ready WSGI server soon.
