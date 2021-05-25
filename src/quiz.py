@@ -209,3 +209,6 @@ def api_check_guesses():
 def index():
     # not gonna be using Jinja2 templates, since we're doing clientside rendering
     return send_file("static/index.html")
+
+if __name__ == "__main__":
+    app.run(port=5000)
