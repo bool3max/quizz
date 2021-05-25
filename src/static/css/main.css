@@ -30,6 +30,10 @@ input[type=submit] {
     transition: box-shadow 0.3s ease-in-out;
 }
 
+.quiz-taker-choice {
+    border-radius: 3px;
+}
+
 .quiz-browser-card:hover {
     box-shadow: 0 7px 15px rgba(0,0,0,0.3);
 }
