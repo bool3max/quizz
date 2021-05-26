@@ -35,7 +35,7 @@ $ pip install flask
     $ env FLASK_APP=src/quiz_main.py FLASK_ENV=development DB_PATH=<name.db> flask run
     ```
 
-3. Visit the app locally on `http://localhost:5000`. The port that the Werkzeug development server listens on can be changed.
+3. Visit the app locally on `http://localhost:5000`. The port that the Werkzeug development server listens on can be changed using the `-p` flag of the `flask` executable.
 
 ## Caveats
 
@@ -45,4 +45,5 @@ however fully supports this field, and it is returned by the server when a parti
 * The `quiz_client_should_randomize_order` column in the `quizzes` table currently has no effect. The user can alter its value during the creation of a new quiz, and its value is returned by the API, however
 it has no effect on the order of the questions in the rendered DOM. I may implement support for it in the future.
 
-* Currently the Heroku application runs on a free tier, using the builtin development Werkzeug server, with `FLASK_ENV=production`. This is not optimal, and I should switch to a production-ready WSGI server soon.
+* Currently the application is hosted on a Heroku free tier, which runs on an ephemeral filesystem whose contents get cleared *at least* once every 24 hours. In addition to that, Heroku "dynos" each run on different filesystems
+with their own copies of the files. As such, SQLite3 is not a good choice when hosting on Heroku. I may migrate to a different db such as PostgreSQL soon.
