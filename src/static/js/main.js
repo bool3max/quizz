@@ -114,6 +114,11 @@ const app = {
               root = $("#quiz_browser_row")
 
         root.children().remove()
+
+        if (quizzes.length == 0) {
+            root.append($("<h6/>", {text: "No quizzes found! Try "}).append($("<a/>", {href: "/#submit", text: "creating a new one..."})))
+            return;
+        }
         
         quizzes.forEach(q => {
             const card = $("<div/>", {class: "col quiz-browser-card"}).css("background-color", q.quiz_colorcode)
