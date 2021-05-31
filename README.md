@@ -34,6 +34,11 @@ $ pip install flask
     ```
     $ env FLASK_APP=src/quiz_main.py FLASK_ENV=development DB_PATH=<name.db> flask run
     ```
+3. Alternatively, since the project is a WSGI application, it can be hosted by any sort of production-ready server, e.g. `gunicorn`:
+
+    ```
+    $ env DB_PATH=./prod.db gunicorn --chdir src quiz:app
+    ```
 
 3. Visit the app locally on `http://localhost:5000`. The port that the Werkzeug development server listens on can be changed using the `-p` flag of the `flask` executable.
 

@@ -61,7 +61,6 @@ def get_quiz(quiz_id):
         questions = cur.execute(query_get_questions, (quiz_id, )).fetchall()
         
         for q in questions:
-            print(q)
             question_text = q[1]
             question_id = q[0]
 
@@ -99,7 +98,6 @@ def check_guesses(guesses_payload):
 
         # obtain the correct answers of the questions in the quiz the client was taking
         answers = cur.execute(answers_query, (quiz_id, )).fetchall()
-        print(answers)
 
         # JSON response payload that will be sent to the client
         response = {
@@ -115,7 +113,6 @@ def check_guesses(guesses_payload):
 
             # get the choice IDs for the particular question in alphabetical order
             choices = [c[0] for c in cur.execute("SELECT choice_id FROM choices WHERE question_id=? ORDER BY choice_text ASC", (current_question_id,))]
-            print("choices: ", choices)
 
             if isinstance(guess_choice_index, list) and count_answers > 1:
                 inner_answers = []

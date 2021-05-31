@@ -12,7 +12,6 @@ const api = {
     },
 
     async pushQuiz(payload) {
-        console.log("pushQuiz payload: ", payload)
         const response = await fetch("/api/new_quiz", {
             method: "POST",
             headers: {
@@ -69,11 +68,19 @@ const app = {
         request_payload.quiz_colorcode = $("#f_quiz_colorcode").val()
         request_payload.quiz_client_should_randomize_order = $("#f_quiz_randomize_order").prop("checked")
 
+        let n_choices_ok = true;
+
         $(".quiz-maker-question-text-input").each((index, element) => {
             const currentQuestionObject = {choices: [], answers: []},
                   e = $(element)
 
             if (e.val().length < 1) return; // skip empty questions
+
+            if (e.parents().eq(1).find("input[type=checkbox]:checked").length == 0 || !n_choices_ok) {
+                n_choices_ok = false
+                return
+            }
+
             currentQuestionObject.question_text = e.val()
 
             // loop through the choices for this particular question and push them to the object
@@ -91,6 +98,11 @@ const app = {
 
             request_payload.questions.push(currentQuestionObject)
         })
+
+        if (!n_choices_ok) {
+            alert("Each question needs to have at least one correct answer marked.")
+            return;
+        }
 
         const response = await api.pushQuiz(request_payload)
         if(response) {
@@ -134,8 +146,6 @@ const app = {
     async renderQuiz() {
         const quiz_id = Number(window.location.hash.split("#")[2]),
               quiz_data = await api.getQuiz(quiz_id)
-
-        console.log(quiz_data)
 
         $("#quiz-taker-quiz-title").html(quiz_data.quiz_name)
         $(document.body).css("background-color", quiz_data.quiz_colorcode)

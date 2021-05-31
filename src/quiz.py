@@ -1,3 +1,5 @@
+#!/usr/bin/python3 
+
 import sqlite3, os
 from flask import Flask, request, url_for, redirect, send_file
 import database_helper as db
